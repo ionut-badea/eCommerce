@@ -3,7 +3,6 @@
     <div class="wrapper">
       <Header></Header>
       <Nuxt />
-      <DisplayedProducts></DisplayedProducts>
     </div>
     <Footer></Footer>
   </div>

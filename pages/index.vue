@@ -1,65 +1,39 @@
 <template>
-  <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">ecommerce</h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
+  <div class="columns is-marginless is-desktop">
+    <div
+      class="column is-10-mobile is-offset-1-mobile is-10-tablet is-offset-1-tablet is-7-desktop is-offset-1-desktop is-6-widescreen is-offset-1-widescreen"
+    >
+      <CartProduct
+        v-for="product in products"
+        :key="product._id"
+        :uid="product._id"
+        :name="product.name"
+        :price="product.price"
+        :discount="product.discount"
+        :stock="product.stock"
+        :quantity="product.quantity"
+        :image="product.image"
+        class="my-5"
+      ></CartProduct>
+    </div>
+    <div
+      class="column is-10-mobile is-offset-1-mobile is-10-tablet is-offset-1-tablet is-3-desktop is-offset-0-desktop is-4-widescreen"
+    >
+      <Checkout class="my-5"></Checkout>
     </div>
   </div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
+<script>
+import { mapGetters } from 'vuex'
 
-export default Vue.extend({})
+export default {
+  computed: {
+    ...mapGetters({
+      products: 'getInCartProducts',
+    }),
+  },
+}
 </script>
 
-<style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
-</style>
+<style></style>
