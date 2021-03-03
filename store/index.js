@@ -7,7 +7,7 @@ export const state = () => {
     inCartProducts: [],
     favorites: [],
     shipment: '5.45',
-    windowWidth: 0,
+    windowWidth: 1920,
     windowSizes: {
       mobile: [0, 768, 2],
       table: [769, 1023, 3],
