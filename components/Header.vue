@@ -9,56 +9,67 @@
           <img src="logo.svg" alt="" class="image" />
         </a>
       </div>
-      <div id="menu" class="column is-0-tablet is-4-desktop is-3-widescreen">
-        <input
-          id="search"
-          type="text"
-          placeholder="search"
-          name="search"
-          class="input has-text-primary"
-        />
+      <div id="hamburger" class="column is-2-mobile is-2-tablet">
+        <button class="has-text-light" @click="menu = !menu">
+          <span
+            class="iconify"
+            data-icon="cil:hamburger-menu"
+            data-inline="false"
+            data-height="48"
+          ></span>
+        </button>
       </div>
-      <div id="menu" class="column is-0-tablet is-3-desktop is-4-widescreen">
-        <div class="columns is-marginless">
-          <div id="account" class="column has-text-light">
-            <span
-              class="iconify"
-              data-icon="ant-design:user-outlined"
-              data-inline="false"
-              data-height="36"
-            ></span>
+      <div
+        id="menu"
+        class="column is-7-desktop is-7-widescreen"
+        :class="{ active: menu }"
+        @mouseleave="menu = !menu"
+      >
+        <div class="columns is-marginless is-vcentered is-dektop">
+          <div class="column is-7-desktop is-5-widescreen">
+            <input
+              id="search"
+              type="text"
+              placeholder="search"
+              name="search"
+              class="input has-text-primary"
+            />
           </div>
-          <div id="favorites" class="column has-text-light">
-            <span
-              class="iconify"
-              data-icon="ant-design:heart-outlined"
-              data-inline="false"
-              data-height="36"
-            ></span>
-            <span v-if="favorites > 0" class="has-text-light p-1">
-              {{ favorites }}
-            </span>
-          </div>
-          <div id="cart" class="column has-text-light">
-            <span
-              class="iconify"
-              data-icon="feather:shopping-cart"
-              data-inline="false"
-              data-height="36"
-            ></span>
-            <span v-if="inCartProducts > 0" class="has-text-light p-1">
-              {{ inCartProducts }}
-            </span>
+          <div class="column is-5-desktop is-7-widescreen has-text-right">
+            <div id="actions" class="columns is-marginless">
+              <div id="account" class="column has-text-light">
+                <span
+                  class="iconify"
+                  data-icon="ant-design:user-outlined"
+                  data-inline="false"
+                  data-height="36"
+                ></span>
+              </div>
+              <div id="favorites" class="column has-text-light">
+                <span
+                  class="iconify"
+                  data-icon="ant-design:heart-outlined"
+                  data-inline="false"
+                  data-height="36"
+                ></span>
+                <span v-if="favorites > 0" class="has-text-light p-1">
+                  {{ favorites }}
+                </span>
+              </div>
+              <div id="cart" class="column has-text-light">
+                <span
+                  class="iconify"
+                  data-icon="feather:shopping-cart"
+                  data-inline="false"
+                  data-height="36"
+                ></span>
+                <span v-if="inCartProducts > 0" class="has-text-light p-1">
+                  {{ inCartProducts }}
+                </span>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div id="hamburger" class="column is-2-mobile is-2-tablet">
-        <span
-          class="iconify"
-          data-icon="cil:hamburger-menu"
-          data-inline="false"
-          data-height="48"
-        ></span>
       </div>
     </div>
   </div>
@@ -68,6 +79,11 @@
 import { mapState } from 'vuex'
 
 export default {
+  data() {
+    return {
+      menu: false,
+    }
+  },
   computed: {
     ...mapState({
       favorites: (state) => state.favorites.length,
@@ -83,9 +99,31 @@ img#logo {
   padding-top: 0.75rem !important;
   padding-bottom: 0.75rem !important;
 }
+button {
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  outline: none;
+  box-shadow: none;
+}
 @media only screen and (max-width: 1023px) {
   #menu {
     display: none;
+  }
+  .active {
+    display: flex !important;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    background-color: hsl(0, 0%, 21%);
+    z-index: 1;
+  }
+  #actions {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
   }
   #hamburger {
     display: flex;
@@ -93,7 +131,7 @@ img#logo {
     align-items: flex-end;
   }
 }
-@media only screen and (min-width: 1023px) {
+@media only screen and (min-width: 1024px) {
   #hamburger {
     display: none;
   }

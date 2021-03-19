@@ -71,7 +71,7 @@
         <button
           id="delete"
           class="button is-paddingless is-danger mx-2 p-2"
-          @click="removeFromCart(uid)"
+          @click="deleteFromCart(uid)"
         >
           <span
             class="iconify"
@@ -145,8 +145,8 @@ export default {
     },
   },
   methods: {
-    ...mapMutations(['addToFavorites', 'removeFromCart']),
-    ...mapActions(['changeQuantity']),
+    ...mapMutations(['addToFavorites']),
+    ...mapActions(['changeQuantity', 'deleteFromCart']),
   },
 }
 </script>

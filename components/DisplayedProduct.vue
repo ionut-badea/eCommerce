@@ -1,16 +1,22 @@
 <template>
   <div id="similar_product" class="container">
     <div class="columns is-marginless is-vcentered is-mobile mb-1">
-      <div class="column is-paddingless has-text-primary is-9 star">
-        <span
-          v-for="star in stars"
-          :id="star"
-          :key="star"
-          class="iconify is-size-5"
-          data-icon="ant-design:star-filled"
-          data-inline="false"
-        ></span>
-        <p class="is-size-5 px-2">
+      <div class="column is-paddingless is-9 star">
+        <div v-for="star in stars" :id="star" :key="star">
+          <span
+            v-if="star <= rating"
+            class="iconify is-size-5 has-text-warning"
+            data-icon="ant-design:star-filled"
+            data-inline="false"
+          ></span>
+          <span
+            v-else
+            class="iconify is-size-5 has-text-grey"
+            data-icon="ant-design:star-filled"
+            data-inline="false"
+          ></span>
+        </div>
+        <p class="is-size-5 has-text-light px-2">
           {{ rating }}
         </p>
       </div>

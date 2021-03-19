@@ -89,13 +89,13 @@
     </div>
     <div class="columns is-vcentered is-centered is-mobile">
       <div class="column is-8 has-text-centered">
-        <nuxt-link
+        <button
           id="checkout-button"
-          to="thank-you"
           class="button is-primary is-size-3-mobile is-size-3-tablet is-size-5-desktop"
+          @click="checkout"
         >
           Checkout
-        </nuxt-link>
+        </button>
       </div>
     </div>
   </div>
@@ -114,6 +114,14 @@ export default {
       productsDiscountValue: 'getCheckoutProductsDiscountValue',
       productsTotalValue: 'getCheckoutProductsTotalValue',
     }),
+  },
+  methods: {
+    checkout() {
+      if (this.$store.state.inCartProducts.length > 0) {
+        this.$router.push('/thank-you')
+        this.$store.commit('cleanCart')
+      }
+    },
   },
 }
 </script>

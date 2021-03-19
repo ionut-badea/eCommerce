@@ -1,11 +1,11 @@
 <template>
   <div id="similar_products" class="has-background-dark my-6 py-5">
     <div class="columns is-marginless is-vcentered is-mobile">
-      <div
-        class="column is-6 pl-5"
-        @click="updateDisplayedProducts('previous')"
-      >
-        <button class="button is-large is-info">
+      <div class="column is-6 pl-5">
+        <button
+          class="button is-large is-info"
+          @click="updateDisplayedProducts('previous')"
+        >
           <span
             class="iconify"
             data-icon="grommet-icons:previous"
@@ -15,11 +15,11 @@
           ></span>
         </button>
       </div>
-      <div
-        class="column is-6 has-text-right pr-5"
-        @click="updateDisplayedProducts('next')"
-      >
-        <button class="button is-large is-info">
+      <div class="column is-6 has-text-right pr-5">
+        <button
+          class="button is-large is-info"
+          @click="updateDisplayedProducts('next')"
+        >
           <span
             class="iconify"
             data-icon="grommet-icons:next"

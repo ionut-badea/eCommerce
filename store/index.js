@@ -118,6 +118,9 @@ export const mutations = {
       state.inCartProducts.splice(index, 1)
     }
   },
+  cleanCart(state) {
+    state.inCartProducts = []
+  },
   updateQuantity(state, { uid, quantity }) {
     state.allProducts
       .filter((product) => product._id === uid)
@@ -204,5 +207,9 @@ export const actions = {
         commit('updateWindowWidth', window.innerWidth)
       })
     }
+  },
+  deleteFromCart({ commit }, uid) {
+    commit('updateQuantity', { uid, quantity: 1 })
+    commit('removeFromCart', uid)
   },
 }
