@@ -17,13 +17,18 @@ export default {
         src: 'https://code.iconify.design/1/1.0.7/iconify.min.js',
         defer: true,
       },
+      {
+        src:
+          'https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js',
+        defer: true,
+      },
     ],
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: ['assets/scss/main.scss'],
   styleResources: {
-    scss: ['~assets/scss/main.scss'],
+    scss: ['assets/scss/main.scss'],
   },
 
   publicRuntimeConfig: {},

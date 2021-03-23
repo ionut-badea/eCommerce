@@ -1,78 +1,70 @@
 <template>
-  <div class="has-background-primary">
-    <div class="columns is-marginless is-vcentered is-mobile">
-      <div
-        id="logo"
-        class="column is-offset-1 is-8-mobile is-8-tablet is-3-desktop"
+  <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+    <div class="container-fluid py-2">
+      <a href="/">
+        <img src="logo.svg" alt="eCommerce" />
+      </a>
+      <button
+        class="navbar-toggler text-light"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#menu"
+        aria-controls="menu"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
       >
-        <a href="/">
-          <img src="logo.svg" alt="" class="image" />
-        </a>
-      </div>
-      <div id="hamburger" class="column is-2-mobile is-2-tablet">
-        <button class="has-text-light" @click="menu = !menu">
-          <span
-            class="iconify"
-            data-icon="cil:hamburger-menu"
-            data-inline="false"
-            data-height="48"
-          ></span>
-        </button>
-      </div>
-      <div
-        id="menu"
-        class="column is-7-desktop is-7-widescreen"
-        :class="{ active: menu }"
-        @mouseleave="menu = !menu"
-      >
-        <div class="columns is-marginless is-vcentered is-dektop">
-          <div class="column is-7-desktop is-5-widescreen">
-            <input
-              id="search"
-              type="text"
-              placeholder="search"
-              name="search"
-              class="input has-text-primary"
-            />
-          </div>
-          <div class="column is-5-desktop is-7-widescreen has-text-right">
-            <div id="actions" class="columns is-marginless">
-              <div id="account" class="column has-text-light">
-                <span
-                  class="iconify"
-                  data-icon="ant-design:user-outlined"
-                  data-inline="false"
-                  data-height="36"
-                ></span>
-              </div>
-              <div id="favorites" class="column has-text-light">
-                <span
-                  class="iconify"
-                  data-icon="ant-design:heart-outlined"
-                  data-inline="false"
-                  data-height="36"
-                ></span>
-                <span v-if="favorites > 0" class="has-text-light p-1">
-                  {{ favorites }}
-                </span>
-              </div>
-              <div id="cart" class="column has-text-light">
-                <span
-                  class="iconify"
-                  data-icon="feather:shopping-cart"
-                  data-inline="false"
-                  data-height="36"
-                ></span>
-                <span v-if="inCartProducts > 0" class="has-text-light p-1">
-                  {{ inCartProducts }}
-                </span>
-              </div>
-            </div>
-          </div>
+        <span
+          class="iconify"
+          data-icon="cil:hamburger-menu"
+          data-inline="false"
+          data-height="48"
+        ></span>
+      </button>
+      <div id="menu" class="collapse navbar-collapse container-fluid">
+        <div class="container-lg mx-3">
+          <input
+            id="search"
+            type="text"
+            placeholder="search"
+            name="search"
+            class="form-control w-75"
+          />
         </div>
+        <ul class="navbar-nav mx-3">
+          <li id="account" class="nav-item text-light mx-3">
+            <span
+              class="iconify"
+              data-icon="ant-design:user-outlined"
+              data-inline="false"
+              data-height="36"
+            ></span>
+          </li>
+          <li id="favorites" class="nav-item text-light mx-3">
+            <span
+              class="iconify"
+              data-icon="ant-design:heart-outlined"
+              data-inline="false"
+              data-height="36"
+            ></span>
+            <span v-if="favorites > 0" class="">
+              {{ favorites }}
+            </span>
+          </li>
+          <li id="cart" class="nav-item text-light mx-3">
+            <span
+              class="iconify"
+              data-icon="feather:shopping-cart"
+              data-inline="false"
+              data-height="36"
+            ></span>
+            <span v-if="inCartProducts > 0" class="">
+              {{ inCartProducts }}
+            </span>
+          </li>
+        </ul>
       </div>
     </div>
-  </div>
+  </nav>
 </template>
 
 <script>
@@ -93,63 +85,4 @@ export default {
 }
 </script>
 
-<style scoped>
-img#logo {
-  min-height: 75px !important;
-  padding-top: 0.75rem !important;
-  padding-bottom: 0.75rem !important;
-}
-button {
-  border: none;
-  background-color: rgba(0, 0, 0, 0);
-  outline: none;
-  box-shadow: none;
-}
-@media only screen and (max-width: 1023px) {
-  #menu {
-    display: none;
-  }
-  .active {
-    display: flex !important;
-    flex-direction: column;
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    width: 100%;
-    background-color: hsl(0, 0%, 21%);
-    z-index: 1;
-  }
-  #actions {
-    display: flex;
-    flex-direction: row;
-    text-align: center;
-  }
-  #hamburger {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-  }
-}
-@media only screen and (min-width: 1024px) {
-  #hamburger {
-    display: none;
-  }
-  #account,
-  #favorites,
-  #cart {
-    display: flex;
-    align-items: center !important;
-  }
-  #favorites div,
-  #cart div {
-    border-radius: 1rem;
-  }
-  #favorites {
-    justify-content: center;
-  }
-  #cart {
-    justify-content: flex-end;
-  }
-}
-</style>
+<style scoped></style>
