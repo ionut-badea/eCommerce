@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-primary">
     <div class="container-fluid py-2">
-      <a href="/">
+      <a href="/" class="d-none d-sm-flex">
         <img src="logo.svg" alt="eCommerce" />
       </a>
       <button
@@ -21,17 +21,16 @@
         ></span>
       </button>
       <div id="menu" class="collapse navbar-collapse container-fluid">
-        <div class="container-lg mx-3">
+        <div class="container-fluid d-flex justify-content-center w-75 py-4">
           <input
-            id="search"
             type="text"
             placeholder="search"
             name="search"
-            class="form-control w-75"
+            class="form-control"
           />
         </div>
-        <ul class="navbar-nav mx-3">
-          <li id="account" class="nav-item text-light mx-3">
+        <ul class="navbar-nav d-flex flex-row justify-content-around">
+          <li class="nav-item text-light text-nowrap px-lg-3 px-xl-5">
             <span
               class="iconify"
               data-icon="ant-design:user-outlined"
@@ -39,25 +38,31 @@
               data-height="36"
             ></span>
           </li>
-          <li id="favorites" class="nav-item text-light mx-3">
+          <li class="nav-item text-light text-nowrap px-lg-3 px-xl-5">
             <span
               class="iconify"
               data-icon="ant-design:heart-outlined"
               data-inline="false"
               data-height="36"
             ></span>
-            <span v-if="favorites > 0" class="">
+            <span
+              v-if="favorites > 0"
+              class="badge rounded-pill bg-danger fs-6"
+            >
               {{ favorites }}
             </span>
           </li>
-          <li id="cart" class="nav-item text-light mx-3">
+          <li class="nav-item text-light text-nowrap px-lg-3 px-xl-5">
             <span
               class="iconify"
               data-icon="feather:shopping-cart"
               data-inline="false"
               data-height="36"
             ></span>
-            <span v-if="inCartProducts > 0" class="">
+            <span
+              v-if="inCartProducts > 0"
+              class="badge rounded-pill bg-danger fs-6"
+            >
               {{ inCartProducts }}
             </span>
           </li>
