@@ -1,9 +1,9 @@
 <template>
-  <div id="similar_products" class="has-background-dark my-6 py-5">
-    <div class="columns is-marginless is-vcentered is-mobile">
-      <div class="column is-6 pl-5">
+  <div class="container-fluid bg-dark">
+    <div class="row py-3">
+      <div class="col ps-4">
         <button
-          class="button is-large is-info"
+          class="btn btn-primary"
           @click="updateDisplayedProducts('previous')"
         >
           <span
@@ -15,9 +15,9 @@
           ></span>
         </button>
       </div>
-      <div class="column is-6 has-text-right pr-5">
+      <div class="col d-flex justify-content-end pe-4">
         <button
-          class="button is-large is-info"
+          class="btn btn-primary"
           @click="updateDisplayedProducts('next')"
         >
           <span
@@ -30,12 +30,8 @@
         </button>
       </div>
     </div>
-    <div class="columns is-marginless is-mobile">
-      <div
-        v-for="product in products"
-        :key="product._id"
-        class="column is-6-mobile px-5"
-      >
+    <div class="row gx-3">
+      <div v-for="product in products" :key="product._id" class="col">
         <DisplayedProduct
           :uid="product._id"
           :name="product.name"

@@ -1,71 +1,65 @@
 <template>
-  <div id="similar_product" class="container">
-    <div class="columns is-marginless is-vcentered is-mobile mb-1">
-      <div class="column is-paddingless is-9 star">
+  <div class="container text-light pb-3">
+    <div class="row justify-content-between fs-5">
+      <div class="col d-flex flex-row mb-1">
         <div v-for="star in stars" :id="star" :key="star">
           <span
             v-if="star <= rating"
-            class="iconify is-size-5 has-text-warning"
+            class="iconify text-warning"
             data-icon="ant-design:star-filled"
             data-inline="false"
           ></span>
           <span
             v-else
-            class="iconify is-size-5 has-text-grey"
+            class="iconify"
             data-icon="ant-design:star-filled"
             data-inline="false"
           ></span>
         </div>
-        <p class="is-size-5 has-text-light px-2">
+        <p class="ms-2 mb-0">
           {{ rating }}
         </p>
       </div>
-      <div class="column is-paddingless">
-        <p
-          class="content is-marginless has-text-light has-text-right is-size-5"
-        >
-          ({{ reviews }})
-        </p>
+      <div class="col text-end mb-1">
+        <p class="mb-0">({{ reviews }})</p>
       </div>
     </div>
-    <div id="image" class="container">
-      <button
-        id="add_to_favorites"
-        class="button is-paddingless is-small is-link p-2"
-        @click="addToFavorites(uid)"
-      >
-        <span
-          class="iconify has-text-light"
-          data-icon="bi:heart-fill"
-          data-inline="false"
-          data-height="18"
-          data-width="18"
-        ></span>
-      </button>
-      <button
-        id="add_to_cart"
-        class="button is-paddingless is-small is-primary p-2"
-        @click="addToCart(uid)"
-      >
-        <span
-          class="iconify"
-          data-icon="bi:cart-plus"
-          data-inline="false"
-          data-heigth="24"
-          data-width="24"
-        ></span>
-      </button>
-      <img :src="image" :alt="name" class="image" />
+    <div class="position-relative">
+      <div class="position-absolute top-0">
+        <button class="btn btn-light text-danger" @click="addToFavorites(uid)">
+          <span
+            class="iconify"
+            data-icon="bi:heart-fill"
+            data-inline="false"
+            data-height="24"
+            data-width="24"
+          ></span>
+        </button>
+      </div>
+      <div class="position-absolute top-0 end-0">
+        <button class="btn btn-light text-primary" @click="addToCart(uid)">
+          <span
+            class="iconify"
+            data-icon="bi:cart-plus"
+            data-inline="false"
+            data-heigth="28"
+            data-width="28"
+          ></span>
+        </button>
+      </div>
     </div>
-    <div class="columns is-marginless is-mobile my-1">
-      <div class="column is-paddingless">
-        <p id="full_price" class="has-text-grey is-size-5">
+    <div class="row">
+      <img :src="image" :alt="name" class="" />
+    </div>
+    <div class="row fs-5">
+      <div v-if="discount > 0" class="col">
+        <p class="text-decoration-line-through">
           ${{ price.toString().split('.')[0] }}
           <sup>{{ price.toFixed(2).toString().split('.')[1] }}</sup>
         </p>
       </div>
-      <div class="column is-paddingless">
-        <p class="has-text-light has-text-right is-size-5">
+      <div class="col">
+        <p class="text-end">
           ${{ (price - (price * discount) / 100).toString().split('.')[0] }}
           <sup>
             {{
@@ -78,7 +72,7 @@
         </p>
       </div>
     </div>
-    <h2 class="has-text-centered has-text-light is-size-5">
+    <h2 class="text-center fs-4">
       {{ name }}
     </h2>
   </div>
@@ -129,30 +123,4 @@ export default {
 }
 </script>
 
-<style scoped>
-img.image {
-  border-radius: 1rem;
-}
-div.star {
-  display: flex;
-  flex-direction: row;
-  align-items: center !important;
-}
-#add_to_favorites {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  z-index: 1;
-  border-radius: 0.25rem;
-}
-#add_to_cart {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  z-index: 1;
-  border-radius: 0.25rem;
-}
-#full_price {
-  text-decoration: line-through;
-}
-</style>
+<style scoped></style>
