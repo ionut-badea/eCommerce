@@ -1,19 +1,13 @@
 <template>
-  <footer class="footer has-background-info">
-    <div class="columns is-marginless is-mobile">
-      <div class="column is-paddingless is-11 is-offset-1">
-        <div class="icon-text has-text-white">
-          <span class="icon">
-            <span
-              class="iconify"
-              data-icon="ant-design:copyright-circle-outlined"
-              data-inline="false"
-            >
-            </span>
-          </span>
-          Copyright
-        </div>
-      </div>
+  <footer class="footer bg-primary text-light">
+    <div class="ms-5 py-3 fs-5">
+      <span
+        class="iconify"
+        data-icon="ant-design:copyright-circle-outlined"
+        data-inline="false"
+      >
+      </span>
+      Copyright
     </div>
   </footer>
 </template>
@@ -22,11 +16,4 @@
 export default {}
 </script>
 
-<style scoped>
-footer {
-  padding-top: 12px !important;
-  padding-right: 0px !important;
-  padding-bottom: 12px !important;
-  padding-left: 0px !important;
-}
-</style>
+<style scoped></style>
