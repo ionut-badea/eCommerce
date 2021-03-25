@@ -3,17 +3,18 @@ import { getField, updateField } from 'vuex-map-fields'
 export const state = () => {
   return {
     allProducts: [],
-    firstProduct: 0,
+    displayProducts: 0,
     inCartProducts: [],
     favorites: [],
     shipment: '5.45',
     windowWidth: 1920,
     windowSizes: {
-      mobile: [0, 768, 2],
-      table: [769, 1023, 3],
-      desktop: [1024, 1215, 4],
-      widescreen: [1216, 1408, 4],
-      fullhd: [1408, 15000, 5],
+      xs: [0, 576, 1],
+      sm: [576, 768, 2],
+      md: [768, 992, 2],
+      lg: [992, 1200, 3],
+      xl: [1200, 1400, 4],
+      xxl: [1400, 14000, 5],
     },
   }
 }
@@ -24,19 +25,19 @@ export const getters = {
     for (const size in state.windowSizes) {
       if (
         state.windowWidth >= state.windowSizes[size][0] &&
-        state.windowWidth <= state.windowSizes[size][1]
+        state.windowWidth < state.windowSizes[size][1]
       ) {
         if (
-          state.firstProduct >= 0 &&
-          state.firstProduct + state.windowSizes[size][2] <=
+          state.displayProducts >= 0 &&
+          state.displayProducts + state.windowSizes[size][2] <=
             state.allProducts.length
         ) {
           return state.allProducts.slice(
-            state.firstProduct,
-            state.firstProduct + state.windowSizes[size][2]
+            state.displayProducts,
+            state.displayProducts + state.windowSizes[size][2]
           )
         } else if (
-          state.firstProduct + state.windowSizes[size][2] >
+          state.displayProducts + state.windowSizes[size][2] >
           state.allProducts.length
         ) {
           return state.allProducts.slice(
@@ -135,23 +136,23 @@ export const mutations = {
         state.windowWidth >= state.windowSizes[size][0] &&
         state.windowWidth <= state.windowSizes[size][1]
       ) {
-        if (state.firstProduct >= 0) {
+        if (state.displayProducts >= 0) {
           if (
-            state.firstProduct + state.windowSizes[size][2] >
+            state.displayProducts + state.windowSizes[size][2] >
             state.allProducts.length
           ) {
-            state.firstProduct =
+            state.displayProducts =
               state.allProducts.length - state.windowSizes[size][2]
           }
           if (
             operation === 'next' &&
-            state.firstProduct + state.windowSizes[size][2] <
+            state.displayProducts + state.windowSizes[size][2] <
               state.allProducts.length
           ) {
-            state.firstProduct += 1
+            state.displayProducts += 1
             break
-          } else if (operation === 'previous' && state.firstProduct > 0) {
-            state.firstProduct -= 1
+          } else if (operation === 'previous' && state.displayProducts > 0) {
+            state.displayProducts -= 1
             break
           }
         }

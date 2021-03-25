@@ -1,25 +1,22 @@
 <template>
-  <div class="columns is-marginless is-desktop">
-    <div
-      class="column is-10-mobile is-offset-1-mobile is-10-tablet is-offset-1-tablet is-7-desktop is-offset-1-desktop is-6-widescreen is-offset-1-widescreen"
-    >
-      <CartProduct
-        v-for="product in products"
-        :key="product._id"
-        :uid="product._id"
-        :name="product.name"
-        :price="product.price"
-        :discount="product.discount"
-        :stock="product.stock"
-        :quantity="product.quantity"
-        :image="product.image"
-        class="my-5"
-      ></CartProduct>
-    </div>
-    <div
-      class="column is-10-mobile is-offset-1-mobile is-10-tablet is-offset-1-tablet is-3-desktop is-offset-0-desktop is-4-widescreen"
-    >
-      <Checkout class="my-5"></Checkout>
+  <div class="container-fluid">
+    <div class="row justify-content-around my-5 mx-0">
+      <div class="col-11 col-sm-11 col-md-10 col-lg-7 col-xl-8">
+        <CartProduct
+          v-for="product in products"
+          :key="product._id"
+          :uid="product._id"
+          :name="product.name"
+          :price="product.price"
+          :discount="product.discount"
+          :stock="product.stock"
+          :quantity="product.quantity"
+          :image="product.image"
+        ></CartProduct>
+      </div>
+      <div class="col-11 col-sm-11 col-md-10 col-lg-5 col-xl-4">
+        <Checkout></Checkout>
+      </div>
     </div>
   </div>
 </template>
