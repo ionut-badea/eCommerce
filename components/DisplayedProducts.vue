@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid bg-dark my-5">
+  <div v-if="products.length > 0" class="container-fluid bg-dark">
     <div class="row py-3">
       <div class="col ps-4">
         <button

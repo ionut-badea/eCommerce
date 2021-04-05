@@ -10,7 +10,8 @@
     "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "lint": "npm run lint:js",
     "test": "jest",
-    "scss": "node-sass -w assets/scss -o assets/css"
+    "scss": "node-sass -w assets/scss -o assets/css",
+    "webpack": "nuxt-ts webpack"
   },
   "dependencies": {
     "@nuxt/typescript-runtime": "^2.0.0",

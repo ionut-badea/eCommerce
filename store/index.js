@@ -162,30 +162,34 @@ export const mutations = {
 }
 
 export const actions = {
-  async nuxtServerInit({ commit }) {
-    const products = await this.$axios({
-      method: 'POST',
-      data: {
-        query: `
-        query{
-          products{
-            _id
-            name,
-            price,
-            discount,
-            rating,
-            reviews,
-            stock,
-            quantity,
-            image
-          }
-        }
-      `,
-      },
-    })
-    const allProducts = products.data.data.products
-    for (const product in allProducts) {
-      commit('saveAllProducts', allProducts[product])
+  async nuxtServerInit({ commit }, { error }) {
+    try {
+      const products = await this.$axios({
+        method: 'POST',
+        data: {
+          query: `
+            query{
+              products{
+                _id
+                name,
+                price,
+                discount,
+                rating,
+                reviews,
+                stock,
+                quantity,
+                image
+              }
+            }
+          `,
+        },
+      })
+      const allProducts = products.data.data.products
+      for (const product in allProducts) {
+        commit('saveAllProducts', allProducts[product])
+      }
+    } catch (e) {
+      error(e)
     }
   },
   changeQuantity({ state, commit }, { uid, operation }) {
